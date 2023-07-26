@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getImageFromGDrive } from "@/utils/getImageFromGDrive";
 import { data } from "types/data";
 
-const dataFilePath = path.join(process.cwd(), "./public/data/data.json");
+const dataFilePath = path.join(process.cwd(), "/tmp/data.json");
 
 export default async function handler(
   req: NextApiRequest,
@@ -42,7 +42,7 @@ export default async function handler(
       await fsPromises.writeFile(dataFilePath, updatedData);
 
       // Send a success response
-      res.status(200).redirect("/");
+      // res.status(200).redirect("/");
     } catch (error) {
       console.error(error);
       // Send an error response
