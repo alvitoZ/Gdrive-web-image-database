@@ -43,7 +43,7 @@ const Form = () => {
 
   return (
     <div className="flex justify-between flex-col items-start border-b border-teal-500 py-2">
-      <form>
+      <form onSubmit={(e) => send(e)}>
         <input
           className="appearance-none bg-pink-300 border-none w-full text-red-600 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
@@ -115,7 +115,6 @@ const Form = () => {
           className="flex-shrink-0 bg-red-600 hover:bg-teal-700  hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
           type="submit"
           disabled={disabled.bool}
-          onClick={(e) => send(e)}
         >
           upload
         </button>
