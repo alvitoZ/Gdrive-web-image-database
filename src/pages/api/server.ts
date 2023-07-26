@@ -42,7 +42,7 @@ export default async function handler(
       await fsPromises.writeFile(dataFilePath, updatedData);
 
       // Send a success response
-      // res.status(200).redirect("/");
+      res.status(200).redirect("/");
     } catch (error) {
       console.error(error);
       // Send an error response
