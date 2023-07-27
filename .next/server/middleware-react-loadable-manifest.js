@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST={"index.tsx -> ../components/molecules/Section1":{id:4329,files:["static/chunks/329.a787b9bf6004827c.js"]}};

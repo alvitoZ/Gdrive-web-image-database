@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getImageFromGDrive } from "@/utils/getImageFromGDrive";
 import { data } from "types/data";
 
-const dataFilePath = path.join(process.cwd(), "./tmp/data.json");
+const dataFilePath = path.join(process.cwd(), "./.next/cache/tmp/data.json");
 
 export default async function handler(
   req: NextApiRequest,
