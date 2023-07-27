@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getImageFromGDrive } from "@/utils/getImageFromGDrive";
 import { data } from "types/data";
 
-const dataFilePath = path.join(__dirname, `../../../../tmp/data.json`);
+const dataFilePath = path.join(process.cwd(), "./tmp/data.json");
 
 export default async function handler(
   req: NextApiRequest,
@@ -37,23 +37,16 @@ export default async function handler(
         alt: alt,
         downloadUrl: downloadUrl,
         src: getImageFromGDrive(src),
-        // src: src,
         name: name,
         desc: desc,
       };
 
       objectData.push(newData);
-      // Convert the object back to a JSON string
       const updatedData = JSON.stringify(objectData);
-
-      // Write the updated data to the JSON file
       await fsPromises.writeFile(dataFilePath, updatedData);
-
-      // Send a success response
       res.status(200).redirect("/");
     } catch (error) {
       console.error(error);
-      // Send an error response
       res.status(500).json({ message: "Error coy" });
     }
   }
