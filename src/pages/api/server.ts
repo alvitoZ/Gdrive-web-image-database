@@ -5,14 +5,14 @@ import { getImageFromGDrive } from "@/utils/getImageFromGDrive";
 import { data } from "types/data";
 
 const dataFilePath = path.join(process.cwd(), "./tmp/data.json");
-// fsPromises
-//   .chmod(dataFilePath, 0o777)
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+fsPromises
+  .chmod(dataFilePath, 0o777)
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 export default async function handler(
   req: NextApiRequest,
