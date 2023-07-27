@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     BASEURL: process.env.BASEURL,
+    DATABASE: process.env.DATABASE,
   },
   images: {
     domains: ["drive.google.com"],

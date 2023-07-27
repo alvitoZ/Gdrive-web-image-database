@@ -3,28 +3,22 @@ import path from "path";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getImageFromGDrive } from "@/utils/getImageFromGDrive";
 import { data } from "types/data";
-
-const dataFilePath = path.join(process.cwd(), "./.next/cache/tmp/data.json");
+import { MongoClient, ObjectId } from "mongodb";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    // Read the existing data from the JSON file
-    // await fsPromises.chmod(dataFilePath, 0o777);
-    const jsonData: any = await fsPromises.readFile(dataFilePath);
-    const objectData = JSON.parse(jsonData);
-    res.status(200).json(objectData);
+    const client = await MongoClient.connect(
+      "mongodb+srv://kitan:kitan@cluster0.fkpdyua.mongodb.net/"
+    );
+    const coll = client.db("coba").collection("data");
+    const cursor = coll.find();
+    const result = await cursor.toArray();
+    return res.status(200).json(result);
   } else if (req.method === "POST") {
     try {
-      // Read the existing data from the JSON file
-      // await fsPromises.chmod(dataFilePath, 0o777);
-
-      const jsonData: any = await fsPromises.readFile(dataFilePath);
-      const objectData = JSON.parse(jsonData);
-
-      // Get the data from the request body
       const { src, alt, downloadUrl, name, desc } = req.body;
 
       // Add the new data to the object
@@ -35,15 +29,32 @@ export default async function handler(
         name: name,
         desc: desc,
       };
-
-      objectData.push(newData);
-      const updatedData = JSON.stringify(objectData);
-
-      await fsPromises.writeFile(dataFilePath, updatedData);
-      res.status(200).redirect("/");
+      const client = await MongoClient.connect(
+        "mongodb+srv://kitan:kitan@cluster0.fkpdyua.mongodb.net/"
+      );
+      const coll = client.db("coba").collection("data");
+      const cursor = await coll.insertOne(newData);
+      // res.status(200).redirect("/");
+      res.status(200).json(cursor);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Error coy" });
+      res.status(500).json({ message: "gagal post coy" });
+    }
+  } else if (req.method === "DELETE") {
+    try {
+      const { id } = req.body;
+      const client = await MongoClient.connect(
+        "mongodb+srv://kitan:kitan@cluster0.fkpdyua.mongodb.net/"
+      );
+      const coll = client.db("coba").collection("data");
+      const cursor = await coll.deleteOne({
+        _id: new ObjectId(String(id)),
+      });
+      // res.status(200).redirect("/");
+      res.status(200).json(cursor);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "gagal delete coy" });
     }
   }
 }
