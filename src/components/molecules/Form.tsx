@@ -22,9 +22,10 @@ const Form = () => {
     bool: false,
   });
 
-  const send = () => {
+  const send = (e: any) => {
     if (!is_valid_google_drive_link(dataNya.src)) {
       alert("kudu masukin link gdrive");
+      e.preventDefault();
     } else {
       api.post("/api/server", dataNya).catch((err) => {
         console.log(err);
@@ -42,7 +43,7 @@ const Form = () => {
 
   return (
     <div className="flex justify-between flex-col items-start border-b border-teal-500 py-2">
-      <form method="post" onSubmit={() => send()}>
+      <form method="post" onSubmit={(e) => send(e)}>
         <input
           className="appearance-none bg-pink-300 border-none w-full text-red-600 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
@@ -117,7 +118,7 @@ const Form = () => {
         >
           upload
         </button>
-        <p>{disabled.bool ? "wait to*d...." : "ok success"}</p>
+        <p>{disabled.bool ? "SABAR KONT*L!!" : "ok success"}</p>
       </form>
     </div>
   );
