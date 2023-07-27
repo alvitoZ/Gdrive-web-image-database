@@ -5,6 +5,14 @@ import { getImageFromGDrive } from "@/utils/getImageFromGDrive";
 import { data } from "types/data";
 
 const dataFilePath = path.join(process.cwd(), "./tmp/data.json");
+// fsPromises
+//   .chmod(dataFilePath, 0o777)
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,14 +25,6 @@ export default async function handler(
     res.status(200).json(objectData);
   } else if (req.method === "POST") {
     try {
-      // fsPromises
-      //   .chmod(dataFilePath, 0o777)
-      //   .then((res) => {
-      //     console.log(res);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
       // Read the existing data from the JSON file
       const jsonData: any = await fsPromises.readFile(dataFilePath);
       const objectData = JSON.parse(jsonData);

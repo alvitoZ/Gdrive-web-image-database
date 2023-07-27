@@ -2,11 +2,23 @@ import { CommonSEO } from "@/components/SEO";
 import BlankTemplate from "@/components/templates/BlankTemplate";
 import PrimaryNavigation from "@/components/molecules/PrimaryNavigation";
 import Image from "next/image";
+import { api } from "@/utils/api";
 
 const coba = () => {
+  // function s() {
+  //   api
+  //     .get("/api/server")
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
   return (
     <BlankTemplate>
       <PrimaryNavigation />
+      {/* <h1 onClick={() => s()}>ss</h1> */}
       <article>
         <h2>Who is Kita?</h2>
         <p>
