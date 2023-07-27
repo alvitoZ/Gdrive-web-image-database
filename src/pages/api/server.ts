@@ -11,12 +11,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    // fsPromises
-    //   .chmod(dataFilePath, 0o777)
-    //   .then((res) => {
-    //   })
-    //   .catch((err) => {
-    //   });
     // Read the existing data from the JSON file
     const jsonData: any = await fsPromises.readFile(dataFilePath);
     const objectData = JSON.parse(jsonData);

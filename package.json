@@ -2,11 +2,9 @@
   "name": "cms-nextjs",
   "version": "0.1.0",
   "private": true,
-  "main": "server.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "deploy": "node server.js",
     "start": "next start",
     "lint": "next lint"
   },
