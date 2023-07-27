@@ -1,0 +1,12 @@
+{
+  "build": {
+    "env": {
+      "TMPDIR": "/tmp"
+    }
+  },
+  "functions": {
+    "env": {
+      "TMPDIR": "/tmp"
+    }
+  }
+}

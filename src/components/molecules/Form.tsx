@@ -43,7 +43,7 @@ const Form = () => {
 
   return (
     <div className="flex justify-between flex-col items-start border-b border-teal-500 py-2">
-      <form onSubmit={(e) => send(e)}>
+      <form method="post" onSubmit={(e) => send(e)}>
         <input
           className="appearance-none bg-pink-300 border-none w-full text-red-600 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
