@@ -23,7 +23,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/atoms/CardBGtsx"
+    "src/components/atoms/CardBGtsx",
+    "src/pages/server.js"
   ],
   "exclude": ["node_modules"]
 }

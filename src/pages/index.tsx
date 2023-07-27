@@ -24,6 +24,8 @@ const index = ({ datas, images }: Props) => {
 
   // console.log(images);
   // console.log(data.data[0].attr.name);
+  // console.log(process.env.NODE_ENV);
+  console.log(process.env.BASEURL);
 
   return (
     <BlankTemplate>

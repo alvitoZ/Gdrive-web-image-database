@@ -11,28 +11,26 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    fsPromises
-      .chmod(dataFilePath, 0o777)
-      .then((res) => {
-        // console.log(res);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+    // fsPromises
+    //   .chmod(dataFilePath, 0o777)
+    //   .then((res) => {
+    //   })
+    //   .catch((err) => {
+    //   });
     // Read the existing data from the JSON file
     const jsonData: any = await fsPromises.readFile(dataFilePath);
     const objectData = JSON.parse(jsonData);
     res.status(200).json(objectData);
   } else if (req.method === "POST") {
     try {
-      fsPromises
-        .chmod(dataFilePath, 0o777)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // fsPromises
+      //   .chmod(dataFilePath, 0o777)
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
       // Read the existing data from the JSON file
       const jsonData: any = await fsPromises.readFile(dataFilePath);
       const objectData = JSON.parse(jsonData);
