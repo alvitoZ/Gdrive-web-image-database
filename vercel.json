@@ -1,12 +1,13 @@
 {
-  "build": {
-    "env": {
-      "TMPDIR": "/tmp"
+  "rewrites": [
+    {
+      "source": "/tmp/(.*)",
+      "destination": "/tmp/$1"
     }
-  },
+  ],
   "functions": {
-    "env": {
-      "TMPDIR": "/tmp"
+    "tmp/data.json": {
+      "memory": 128
     }
   }
 }
