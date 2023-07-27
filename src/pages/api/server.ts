@@ -12,14 +12,14 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     // Read the existing data from the JSON file
-    await fsPromises.chmod(dataFilePath, 0o777);
+    // await fsPromises.chmod(dataFilePath, 0o777);
     const jsonData: any = await fsPromises.readFile(dataFilePath);
     const objectData = JSON.parse(jsonData);
     res.status(200).json(objectData);
   } else if (req.method === "POST") {
     try {
       // Read the existing data from the JSON file
-      await fsPromises.chmod(dataFilePath, 0o777);
+      // await fsPromises.chmod(dataFilePath, 0o777);
 
       const jsonData: any = await fsPromises.readFile(dataFilePath);
       const objectData = JSON.parse(jsonData);
