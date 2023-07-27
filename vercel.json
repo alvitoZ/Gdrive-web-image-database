@@ -4,10 +4,5 @@
       "source": "/tmp/(.*)",
       "destination": "/tmp/$1"
     }
-  ],
-  "functions": {
-    "tmp/data.json": {
-      "memory": 128
-    }
-  }
+  ]
 }
