@@ -1,4 +1,5 @@
 export type data = {
+  _id: string;
   src: string;
   alt: string;
   downloadUrl: string;

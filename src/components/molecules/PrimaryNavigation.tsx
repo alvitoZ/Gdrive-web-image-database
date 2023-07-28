@@ -15,6 +15,7 @@ const PrimaryNavigation = () => {
           py-4
           md:pt-16
           text-lg text-gray-700
+          bg-blue-300
         "
       >
         <div
@@ -46,7 +47,7 @@ const PrimaryNavigation = () => {
                 <Link href={"/"}>Homepage</Link>
               </div>
               <div className="flex items-center ">
-                <Link href={"/coba"}>about me</Link>
+                <Link href={"/about"}>about me</Link>
               </div>
             </div>
           </div>

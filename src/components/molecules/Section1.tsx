@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CardBG from "../atoms/CardBG";
 import Viewer from "react-viewer";
-import { ImageDecorator } from "react-viewer/lib/ViewerProps";
 import { data, datas } from "types/data";
 
 type Images = Omit<data, "name" | "desc">;
@@ -17,7 +16,7 @@ const Section1 = ({ datas, images }: Props) => {
 
   return (
     <div
-      className={`flex md:justify-start justify-center flex-wrap border-b-[3px] gap-1 pb-4 `}
+      className={`flex md:justify-start justify-center flex-wrap border-b-[3px] gap-1 py-4 `}
     >
       {datas.map((e, i) => {
         return (
@@ -26,9 +25,8 @@ const Section1 = ({ datas, images }: Props) => {
               setActiveIdx(i);
               setVisible(true);
             }}
-            key={i}
+            key={e._id}
             image={e.src ? e.src : "/uploads/default.jfif"}
-            bgColor="bg-blue-300"
             name={e.name}
             desc={e.desc}
           />

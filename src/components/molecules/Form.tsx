@@ -3,7 +3,7 @@ import { api } from "@/utils/api";
 import { data } from "types/data";
 import { is_valid_google_drive_link } from "@/utils/gDriveValidate";
 
-type Data = data;
+type Data = Omit<data, "downloadUrl" | "_id">;
 
 type disabled = {
   bool: boolean;
@@ -13,7 +13,6 @@ const Form = () => {
   const [dataNya, setDatanya] = useState<Data>({
     src: "",
     alt: "",
-    downloadUrl: "",
     name: "",
     desc: "",
   });
@@ -44,19 +43,22 @@ const Form = () => {
   return (
     <div className="flex justify-between flex-col items-start border-b border-teal-500 py-2">
       <form method="post" onSubmit={(e) => send(e)}>
-        <input
-          className="appearance-none bg-pink-300 border-none w-full text-red-600 mr-3 py-1 px-2 leading-tight focus:outline-none"
-          type="text"
-          required
-          name="src"
-          placeholder="your image Gdrive link"
-          onChange={(e) =>
-            setDatanya({
-              ...dataNya,
-              src: e.target.value,
-            })
-          }
-        />
+        <div className="p-6">
+          <p>wajib masukin link gdrive image</p>
+          <input
+            className="appearance-none bg-pink-300 border-none w-full text-red-600 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            type="text"
+            required
+            name="src"
+            placeholder="your image Gdrive link"
+            onChange={(e) =>
+              setDatanya({
+                ...dataNya,
+                src: e.target.value,
+              })
+            }
+          />
+        </div>
         <input
           className="appearance-none bg-yellow-300 border-none w-full text-red-600 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
@@ -67,19 +69,6 @@ const Form = () => {
             setDatanya({
               ...dataNya,
               alt: e.target.value,
-            })
-          }
-        />
-        <input
-          className="appearance-none bg-blue-600 border-none w-full text-red-600 mr-3 py-1 px-2 leading-tight focus:outline-none"
-          type="text"
-          required
-          name="downloadUrl"
-          placeholder="your image downloadUrl"
-          onChange={(e) =>
-            setDatanya({
-              ...dataNya,
-              downloadUrl: e.target.value,
             })
           }
         />
@@ -112,13 +101,13 @@ const Form = () => {
           }
         />
         <button
-          className="flex-shrink-0 bg-red-600 hover:bg-teal-700  hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+          className="flex-shrink-0 bg-green-400 hover:bg-teal-400  hover:border-teal-400 text-sm border-4 text-white py-1 px-2 rounded"
           type="submit"
           disabled={disabled.bool}
         >
           upload
         </button>
-        <p>{disabled.bool ? "SABAR KONT*L!!" : "ok success"}</p>
+        <p>{disabled.bool ? "wait tod...." : "klik untuk upload"}</p>
       </form>
     </div>
   );

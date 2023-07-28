@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
 import { api } from "@/utils/api";
 import { data, datas } from "types/data";
+import Footer from "@/components/molecules/Footer";
 
 type Images = Omit<data, "name" | "desc">;
 
@@ -25,6 +26,7 @@ const index = ({ datas, images }: Props) => {
       <h1>Test Gdrive as Database Form Image</h1>
       <Form />
       <DynamicComponentWithNoSSR images={images} datas={datas} />
+      <Footer />
     </BlankTemplate>
   );
 };

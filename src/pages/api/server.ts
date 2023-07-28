@@ -15,16 +15,16 @@ export default async function handler(
     );
     const coll = client.db("coba").collection("data");
     const cursor = coll.find();
-    const result = await cursor.toArray();
+    const result = (await cursor.toArray()).reverse();
     return res.status(200).json(result);
   } else if (req.method === "POST") {
     try {
-      const { src, alt, downloadUrl, name, desc } = req.body;
+      const { src, alt, name, desc } = req.body;
 
       // Add the new data to the object
-      const newData: data = {
+      const newData: Omit<data, "_id"> = {
         alt: alt,
-        downloadUrl: downloadUrl,
+        downloadUrl: src,
         src: getImageFromGDrive(src),
         name: name,
         desc: desc,
