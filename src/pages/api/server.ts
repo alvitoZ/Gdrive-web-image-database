@@ -11,7 +11,7 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     const client = await MongoClient.connect(
-      "mongodb+srv://kitan:kitan@cluster0.fkpdyua.mongodb.net/"
+      ""
     );
     const coll = client.db("coba").collection("data");
     const cursor = coll.find();
@@ -30,7 +30,7 @@ export default async function handler(
         desc: desc,
       };
       const client = await MongoClient.connect(
-        "mongodb+srv://kitan:kitan@cluster0.fkpdyua.mongodb.net/"
+        ""
       );
       const coll = client.db("coba").collection("data");
       const cursor = await coll.insertOne(newData);
@@ -44,7 +44,7 @@ export default async function handler(
     try {
       const { id } = req.body;
       const client = await MongoClient.connect(
-        "mongodb+srv://kitan:kitan@cluster0.fkpdyua.mongodb.net/"
+        ""
       );
       const coll = client.db("coba").collection("data");
       const cursor = await coll.deleteOne({
