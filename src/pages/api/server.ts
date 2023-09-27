@@ -16,18 +16,7 @@ export default async function handler(
     const coll = client.db("coba").collection("data");
     const cursor = coll.find();
     const result = (await cursor.toArray()).reverse();
-
-    return new res({
-      json:result,
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    }
-  });
-    
-    //return res.status(200).json(result);
+    return res.status(200).json(result);
   } else if (req.method === "POST") {
     try {
       const { src, alt, name, desc } = req.body;
