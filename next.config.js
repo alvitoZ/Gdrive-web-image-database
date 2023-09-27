@@ -9,7 +9,7 @@ const nextConfig = {
         return [
           {
             source: '/api/:path*',
-            destination: 'https://api.example.com/:path*',
+            destination: 'https://gdrive-web-image-database.vercel.app/api*',
           },
         ]
       },
