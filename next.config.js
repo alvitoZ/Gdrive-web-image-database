@@ -1,17 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+// next.config.js
+module.exports = {
+    async rewrites() {
+        return [
+           reactStrictMode: true,
   env: {
     BASEURL: process.env.BASEURL,
     DATABASE: process.env.DATABASE,
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "*",
-      },
-    ];
   },
   images: {
     domains: ["drive.google.com"],
@@ -22,6 +16,11 @@ const nextConfig = {
       },
     ],
   },
-};
+          {
+            source: '/api/:path*',
+            destination: '*',
+          },
+        ]
+      },
+  };
 
-module.exports = nextConfig;
