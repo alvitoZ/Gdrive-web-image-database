@@ -5,16 +5,14 @@ const nextConfig = {
     BASEURL: process.env.BASEURL,
     DATABASE: process.env.DATABASE,
   },
-{
   async rewrites() {
-        return [
-          {
-            source: '/api/:path*',
-            destination: '*',
-          },
-        ]
+    return [
+      {
+        source: "/api/:path*",
+        destination: "*",
       },
-},
+    ];
+  },
   images: {
     domains: ["drive.google.com"],
     remotePatterns: [
@@ -25,6 +23,5 @@ const nextConfig = {
     ],
   },
 };
-
 
 module.exports = nextConfig;
