@@ -10,13 +10,18 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
+    const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
     const client = await MongoClient.connect(
       "mongodb+srv://kitan:kitan@cluster0.fkpdyua.mongodb.net/"
     );
     const coll = client.db("coba").collection("data");
     const cursor = coll.find();
     const result = (await cursor.toArray()).reverse();
-    return res.status(200).json(result);
+    return res.status(200).json(result, { headers: corsHeaders });
   } else if (req.method === "POST") {
     try {
       const { src, alt, name, desc } = req.body;
