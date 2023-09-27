@@ -1,8 +1,6 @@
-// next.config.js
-module.exports = {
-    async rewrites() {
-        return [
-           reactStrictMode: true,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
   env: {
     BASEURL: process.env.BASEURL,
     DATABASE: process.env.DATABASE,
@@ -16,11 +14,6 @@ module.exports = {
       },
     ],
   },
-          {
-            source: '/api/:path*',
-            destination: '*',
-          },
-        ]
-      },
-  };
+};
 
+module.exports = nextConfig;
